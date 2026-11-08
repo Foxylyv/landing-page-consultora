@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elaine | Planos de Saúde em todo o Brasil</title>
+<meta name="description" content="Elaine, consultora Simca Seguros: cotação gratuita de planos de saúde Amil, Assim Saúde, Bradesco Saúde, Porto Saúde, SulAmérica e Unimed para você e sua empresa em todo o Brasil.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ======= CONFIGURAÇÃO DE CORES (troque aqui quando tiver a identidade da cliente) ======= */
+  :root{
+    /* Preto + vermelho vinho (tom do letreiro da Simca), usado com moderação */
+    --azul:#2b2624;       /* grafite quente (mais suave que preto puro) */
+    --azul-2:#2a2a2a;
+    --verde:#9e2f2c;      /* vermelho vinho: detalhes, ícones, linhas */
+    --verde-claro:#f6ecea;/* rosado bem claro (fundo de etiquetas) */
+    --destaque:#9e2f2c;   /* botões: vinho sóbrio */
+    --destaque-2:#862624;
+    --texto:#1c1c1c;
+    --suave:#5f5a58;
+    --fundo:#ffffff;
+    --fundo-2:#f7f4f2;    /* off-white quente */
+    --borda:#e8e2df;
+    --raio:18px;
+    --sombra:0 10px 30px rgba(0,0,0,.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--texto);background:var(--fundo);line-height:1.6;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .container{width:100%;max-width:1160px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:15px 28px;border-radius:999px;font-weight:700;font-size:1rem;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s;font-family:inherit}
+  .btn-primario{background:var(--destaque);color:#fff}
+  .btn-primario:hover{background:var(--destaque-2)}
+  .btn-secundario{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+  .btn-secundario:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .tag{display:inline-block;background:var(--verde-claro);color:var(--verde);font-weight:700;font-size:.8rem;padding:6px 14px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
+  h1,h2,h3{line-height:1.2;letter-spacing:-.02em}
+  h2{font-size:clamp(1.7rem,3.5vw,2.5rem);margin:.6rem 0 1rem}
+  .secao{padding:90px 0}
+  .secao-cab{text-align:center;max-width:680px;margin:0 auto 50px}
+  .secao-cab p{color:var(--suave);font-size:1.08rem}
+
+  /* ===== Topo ===== */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--borda)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--azul);text-decoration:none}
+  .logo-icone{width:38px;height:38px;border-radius:11px;background:var(--verde);display:grid;place-items:center;color:#fff}
+  .logo-texto{display:flex;flex-direction:column;line-height:1.1}
+  .logo-texto small{font-size:.7rem;font-weight:600;color:var(--suave);letter-spacing:.01em}
+  .faixa-anuncio{background:#2b2624;color:#efe9e6;font-weight:500 !important;text-align:center;font-weight:700;font-size:.9rem;padding:9px 16px}
+  .faixa-anuncio a{text-decoration:underline;text-underline-offset:3px;margin-left:6px;color:#e3a29b;font-weight:700}
+  .anuncio{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:var(--fundo-2);border:1px solid var(--borda);border-left:4px solid var(--verde);border-radius:18px;padding:28px 34px}
+  .anuncio b{font-size:1.25rem;color:var(--azul);display:block}
+  .anuncio span{color:var(--suave)}
+  .check-odonto{display:flex;align-items:center;gap:10px;font-weight:600;font-size:.92rem;margin:4px 0 16px;cursor:pointer}
+  .check-odonto input{width:18px;height:18px;accent-color:var(--verde)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{text-decoration:none;font-weight:600;color:var(--suave);font-size:.95rem}
+  .nav-links a:hover{color:var(--azul)}
+  .nav .btn{padding:11px 20px;font-size:.92rem}
+  .nav .btn{white-space:nowrap}
+  .nav-links a.btn{color:#fff}
+  @media(max-width:860px){.nav-links a:not(.btn){display:none}}
+  @media(max-width:520px){.logo-texto small{display:none}.nav .btn{padding:10px 16px;font-size:.85rem}.op-lista{display:grid;grid-template-columns:1fr 1fr;gap:10px}.op-item{min-width:0;padding:14px 10px;font-size:.92rem}}
+
+  /* ===== Hero ===== */
+  .hero{background:#111;color:#fff;padding:70px 0 80px;overflow:hidden;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+  .hero .tag{background:rgba(255,255,255,.08);color:#e3b4ae}
+  .hero h1{font-size:clamp(2.1rem,5vw,3.5rem);margin:18px 0}
+  .hero h1 span{color:#e3a29b}
+  .hero p.lead{font-size:1.15rem;color:#d6d1cf;max-width:540px;margin-bottom:30px}
+  .hero-botoes{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-provas{display:flex;gap:26px;margin-top:38px;flex-wrap:wrap;color:#d6d1cf;font-size:.92rem}
+  .hero-provas div{display:flex;align-items:center;gap:8px}
+  .hero-provas svg{color:#e3a29b;flex-shrink:0}
+  /* Cartão "curiosidade" */
+  .hero-foto{position:relative;padding-bottom:170px;max-width:460px;margin-left:auto}
+  .hero-foto img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 20%;-webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 42%,#000 62%,transparent 100%);mask-image:radial-gradient(ellipse 72% 68% at 50% 42%,#000 62%,transparent 100%)}
+  .hero-foto .nome{position:absolute;top:18px;right:18px;background:rgba(14,14,14,.75);backdrop-filter:blur(6px);padding:10px 14px;border-radius:12px;font-size:.85rem;line-height:1.3}
+  .hero-foto .nome b{display:block;font-size:.95rem}
+  .curioso{background:#fff;color:var(--texto);border-radius:20px;padding:22px;box-shadow:0 24px 50px rgba(0,0,0,.35);position:absolute;left:50%;transform:translateX(-50%);bottom:0;width:330px;padding:20px}
+  .curioso h3{font-size:1.15rem;margin-bottom:4px}
+  .curioso small{color:var(--suave)}
+  .preco-borrado{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border:1px solid var(--borda);border-radius:12px;margin-top:10px}
+  .preco-borrado b{font-size:.95rem}
+  .preco-borrado span.op{font-size:.8rem;color:var(--suave);display:block;font-weight:500}
+  .borrado{filter:blur(6px);user-select:none;font-weight:800;color:var(--azul);font-size:1rem;white-space:nowrap}
+  .curioso h3{font-size:1.02rem}.curioso .preco-borrado b{font-size:.88rem}
+  .curioso .btn{width:100%;margin-top:14px;padding:12px 20px;font-size:.92rem}
+  
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-foto{padding-bottom:0;max-width:480px;margin:0 auto}.hero-foto img{max-width:none}.curioso{position:relative;left:auto;bottom:auto;transform:none;width:auto;max-width:440px;margin:-150px auto 0}.hero-foto img{aspect-ratio:1/1;object-position:center 30%}}
+
+  /* ===== Faixa de operadoras ===== */
+  .operadoras{background:var(--fundo-2);padding:34px 0;border-bottom:1px solid var(--borda)}
+  .operadoras p{text-align:center;color:var(--suave);font-weight:600;font-size:.9rem;margin-bottom:18px;text-transform:uppercase;letter-spacing:.08em}
+  .op-lista{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .op-item{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:14px 22px;width:170px;height:84px;display:flex;align-items:center;justify-content:center}
+  .op-item img{max-width:100%;max-height:52px;object-fit:contain}
+  .op-lista{max-width:1100px;margin:0 auto}
+  /* quando tiver os logos oficiais (autorizados), troque o texto por <img> */
+
+  /* ===== PF x PJ ===== */
+  .cards-2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card-plano{border:1px solid var(--borda);border-radius:var(--raio);padding:38px;background:linear-gradient(160deg,#fff 0%,#f4f0ee 100%);box-shadow:var(--sombra);display:flex;flex-direction:column;position:relative;overflow:hidden}
+  .card-plano.pj{background:linear-gradient(160deg,#fff 0%,var(--verde-claro) 100%);border-color:#ead6d2}
+  .card-plano .icone{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--fundo-2);color:var(--azul);margin-bottom:18px}
+  .card-plano.pj .icone{background:var(--verde);color:#fff}
+  .card-plano h3{font-size:1.5rem;margin-bottom:8px}
+  .card-plano > p{color:var(--suave);margin-bottom:20px}
+  .lista-check{list-style:none;display:grid;gap:11px;margin-bottom:28px}
+  .lista-check li{display:flex;gap:10px;align-items:flex-start}
+  .lista-check svg{color:var(--verde);flex-shrink:0;margin-top:3px}
+  .card-plano .btn{margin-top:auto;align-self:flex-start}
+  
+  @media(max-width:820px){.cards-2{grid-template-columns:1fr}.card-plano{padding:28px}}
+
+  /* ===== Economia empresa ===== */
+  .economia{background:#3a3432;color:#fff;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+  .economia p{color:#d6d1cf}
+  .economia h2{color:#fff}
+  .economia-quadro{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:26px}
+  .barra-linha{margin-bottom:18px}
+  .barra-linha:last-child{margin-bottom:0}
+  .barra-rotulo{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px;color:#d6d1cf}
+  .barra{height:14px;border-radius:999px;background:rgba(255,255,255,.12);overflow:hidden}
+  .barra i{display:block;height:100%;border-radius:999px}
+  .economia small{display:block;margin-top:14px;color:#9a9391;font-size:.78rem}
+  @media(max-width:860px){.economia{grid-template-columns:1fr;padding:34px 24px}}
+
+  /* ===== Como funciona ===== */
+  .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:passo}
+  .passo{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:28px;position:relative}
+  .passo::before{counter-increment:passo;content:counter(passo);width:42px;height:42px;border-radius:12px;background:var(--verde-claro);color:var(--verde);font-weight:800;display:grid;place-items:center;margin-bottom:16px;font-size:1.1rem}
+  .passo h3{font-size:1.08rem;margin-bottom:6px}
+  .passo p{color:var(--suave);font-size:.95rem}
+  @media(max-width:900px){.passos{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.passos{grid-template-columns:1fr}}
+
+  /* ===== Formulário de cotação ===== */
+  .cotacao{background:var(--fundo-2)}
+  .cotacao-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}
+  .form-card{background:#fff;border-radius:24px;padding:34px;box-shadow:var(--sombra);border:1px solid var(--borda)}
+  .abas{display:grid;grid-template-columns:1fr 1fr;background:var(--fundo-2);border-radius:14px;padding:5px;margin-bottom:24px}
+  .abas button{border:0;background:transparent;padding:12px;border-radius:10px;font-weight:700;font-family:inherit;font-size:.95rem;color:var(--suave);cursor:pointer}
+  .abas button.ativa{background:#fff;color:var(--azul);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .campo{margin-bottom:16px}
+  .campo label{display:block;font-weight:600;font-size:.9rem;margin-bottom:6px}
+  .campo input,.campo select{width:100%;padding:13px 15px;border:1.5px solid var(--borda);border-radius:12px;font-family:inherit;font-size:1rem;background:#fff;color:var(--texto)}
+  .campo input:focus,.campo select:focus{outline:none;border-color:var(--verde);box-shadow:0 0 0 4px rgba(158,47,44,.10)}
+  .linha-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:520px){.linha-2{grid-template-columns:1fr}.form-card{padding:24px}}
+  .so-pj{display:none}
+  .modo-pj .so-pj{display:block}
+  .modo-pj .so-pf{display:none}
+  .form-card .btn{width:100%;margin-top:6px}
+  .aviso-form{font-size:.8rem;color:var(--suave);text-align:center;margin-top:12px}
+  .beneficios-lado{display:grid;gap:18px;margin-top:26px}
+  .beneficio{display:flex;gap:14px}
+  .beneficio .bi{width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--borda);display:grid;place-items:center;color:var(--verde);flex-shrink:0}
+  .beneficio b{display:block}
+  .beneficio span{color:var(--suave);font-size:.95rem}
+  @media(max-width:900px){.cotacao-grid{grid-template-columns:1fr}}
+
+  /* ===== Sobre (espaço para foto) ===== */
+  .sobre-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+  .foto-sobre{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 25%;border-radius:24px}
+  .foto-placeholder{aspect-ratio:4/5;border-radius:24px;background:repeating-linear-gradient(45deg,var(--fundo-2),var(--fundo-2) 14px,#eaf1f6 14px,#eaf1f6 28px);border:2px dashed #c4d3de;display:grid;place-items:center;text-align:center;color:var(--suave);font-weight:600;padding:20px}
+  .sobre p{color:var(--suave);margin-bottom:14px;font-size:1.05rem}
+  @media(max-width:860px){.sobre-grid{grid-template-columns:1fr}.foto-sobre{aspect-ratio:1/1;max-width:420px}}
+
+  /* ===== FAQ ===== */
+  .faq{max-width:800px;margin:0 auto}
+  details{border:1px solid var(--borda);border-radius:14px;padding:4px 22px;margin-bottom:12px;background:#fff}
+  summary{cursor:pointer;font-weight:700;padding:16px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--verde)}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--suave);padding-bottom:18px}
+
+  /* ===== CTA final + rodapé ===== */
+  .cta-final{background:var(--verde-claro);border-top:3px solid var(--verde);color:var(--texto);text-align:center;padding:80px 0}
+  .cta-final h2{color:var(--texto)}
+  .cta-final p{color:var(--suave);max-width:580px;margin:0 auto 28px;font-size:1.1rem}
+  footer{background:#2b2624;color:#a39c99;padding:50px 0 30px;font-size:.92rem}
+  .rodape-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:30px}
+  footer h4{color:#fff;margin-bottom:12px}
+  footer a{text-decoration:none}
+  footer a:hover{color:#fff}
+  footer ul{list-style:none;display:grid;gap:6px}
+  .rodape-legal{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;font-size:.8rem;line-height:1.7}
+  .simca-rodape{display:table;background:#fff;border-radius:10px;padding:8px 12px;margin-bottom:12px}
+  .simca-rodape img{display:block;width:140px;height:auto}
+  @media(max-width:760px){.rodape-grid{grid-template-columns:1fr}}
+
+  /* ===== WhatsApp flutuante ===== */
+  .zap{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 20px rgba(0,0,0,.25)}
+  @keyframes pulso{0%,100%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}50%{box-shadow:0 0 0 14px rgba(37,211,102,0)}}
+
+  /* animação de entrada */
+  .revelar{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+  .revelar.visivel{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.revelar{opacity:1;transform:none}.zap{animation:none}}
+
+  .nav-tel{display:inline-flex;align-items:center;gap:6px;color:var(--texto) !important;font-weight:700 !important}
+  .nav-tel svg{color:#25a35a}
+  .hero-tel{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:#efe9e6;text-decoration:none;font-size:1rem}
+  .hero-tel svg{color:#5fd38d}
+  .hero-tel b{font-size:1.1rem;color:#fff}
+  .tel-num{font-weight:800;color:var(--verde)}
+  .seguros{background:var(--fundo-2);border:1px solid var(--borda);border-radius:24px;padding:48px 32px}
+  .seguros-lista{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:820px;margin:0 auto}
+  .seguros-lista span{background:#fff;border:1px solid var(--borda);border-radius:999px;padding:10px 18px;font-weight:600;font-size:.95rem}
+  @media(max-width:1000px){.nav-tel{display:none !important}}
+
+  /* ===== AJUSTES CELULAR ===== */
+  @media(max-width:600px){
+    .secao{padding:56px 0}
+    .secao-cab{margin-bottom:30px}
+    .container{padding:0 16px}
+    .faixa-anuncio{font-size:.8rem;padding:8px 12px}
+    .nav{height:62px}
+    .hero{padding:34px 0 44px}
+    .hero h1{margin:12px 0}
+    .hero p.lead{font-size:1rem;margin-bottom:22px}
+    .hero-botoes .btn{flex:1 1 auto;padding:13px 16px;font-size:.92rem}
+    .hero-provas{gap:8px 16px;margin-top:22px;font-size:.82rem}
+    .hero-grid{gap:30px}
+    .hero-foto{max-width:none;padding-bottom:0}
+    .hero-foto img{aspect-ratio:4/5;object-position:center 20%}
+    .curioso{position:relative;left:auto;bottom:auto;transform:none;width:auto;margin:-130px 14px 0;padding:18px}
+    .preco-borrado{gap:10px}
+    .curioso .preco-borrado b{font-size:.84rem;white-space:nowrap}
+    .preco-borrado span.op{white-space:nowrap;font-size:.74rem}
+    .borrado{font-size:.85rem}
+    .operadoras{padding:26px 0}
+    .op-lista{display:grid !important;grid-template-columns:1fr 1fr;gap:8px}
+    .op-item{width:auto;height:72px;padding:10px 14px}
+    .op-item img{max-height:44px}
+    .card-plano{padding:24px}
+    .card-plano .icone{width:46px;height:46px;margin-bottom:12px}
+    .card-plano h3{font-size:1.3rem}
+    .lista-check{gap:8px;margin-bottom:22px;font-size:.95rem}
+    .card-plano .btn{align-self:stretch}
+    .cards-2{gap:16px}
+    section[style*="padding:0 0 90px"]{padding:0 0 56px !important}
+    .economia{padding:28px 20px;gap:24px}
+    .anuncio{padding:22px 20px}
+    .anuncio .btn{width:100%}
+    .passos{gap:10px}
+    .passo{display:grid;grid-template-columns:40px 1fr;column-gap:14px;padding:18px}
+    .passo::before{grid-row:span 2;margin:0;width:40px;height:40px}
+    .passo h3{font-size:1rem;margin:0}
+    .cotacao-grid{gap:28px}
+    .beneficios-lado{gap:12px;margin-top:18px}
+    .form-card{padding:20px}
+    .linha-2{grid-template-columns:1fr 1fr;gap:10px}
+    .campo input,.campo select{padding:12px 11px;font-size:.95rem}
+    .sobre-grid{gap:24px}
+    .foto-sobre{aspect-ratio:4/3;max-width:none;object-position:center 22%}
+    .cta-final{padding:56px 0}
+    details{padding:2px 16px}
+    summary{padding:13px 0;font-size:.95rem}
+    .zap{width:52px;height:52px;right:14px;bottom:14px}
+    .seguros{padding:30px 16px}
+    .seguros-lista span{padding:8px 14px;font-size:.88rem}
+    .hero-tel{margin-top:16px}
+  }
+
+  /* economia detalhada */
+  .eq-titulo{display:flex;align-items:center;gap:8px;font-weight:700;color:#fff;margin-bottom:18px}
+  .eq-titulo svg{color:#e3a29b}
+  .eq-linha{margin-bottom:14px}
+  .eq-rot{display:flex;justify-content:space-between;align-items:baseline;font-size:.9rem;color:#efe9e6;margin-bottom:6px;font-weight:600}
+  .eq-rot small{font-weight:400;color:#9a9391;font-size:.75rem}
+  .eq-barra{display:flex;height:22px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.06)}
+  .eq-barra i{display:block;height:100%}
+  .s1{background:#8a817d}.s2{background:#b5655e}.s3{background:#e3a29b}
+  .eq-econ{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 6px,transparent 6px 12px);border:1.5px dashed rgba(227,162,155,.7);border-radius:0 8px 8px 0;font-style:normal;font-size:.7rem;font-weight:700;color:#e3a29b;display:flex !important;align-items:center;justify-content:center;letter-spacing:.04em;text-transform:uppercase}
+  .eq-legenda{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.75rem;color:#bdb5b2;margin-top:4px}
+  .eq-legenda b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+  .eq-analiso{margin-top:20px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}
+  .eq-analiso > b{color:#fff;font-size:.92rem}
+  .eq-analiso ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-top:10px;font-size:.84rem;color:#d6d1cf}
+  .eq-analiso li{display:flex;gap:6px;align-items:flex-start}
+  .eq-analiso li svg{color:#e3a29b;flex-shrink:0;margin-top:2px}
+  /* ícones */
+  .passo::before{content:none}
+  .passo-ic{width:48px;height:48px;border-radius:14px;background:var(--verde-claro);color:var(--verde);display:grid;place-items:center;margin-bottom:14px}
+  .passo-n{display:block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--verde);margin-bottom:4px}
+  .seguros-lista span{display:inline-flex;align-items:center;gap:8px}
+  .seguros-lista svg{color:var(--verde);flex-shrink:0}
+  @media(max-width:600px){
+    .passo{grid-template-columns:48px 1fr}
+    .passo-ic{grid-row:span 3;margin:0}
+    .eq-analiso ul{grid-template-columns:1fr}
+    .eq-rot{flex-direction:column;gap:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== FAIXA DE ANÚNCIO ========== -->
+<div class="faixa-anuncio">Tem CNPJ ou MEI? Conheça os planos de saúde empresariais. <a href="#cotacao" data-tipo="pj">Fazer uma cotação</a></div>
+
+<!-- ========== TOPO ========== -->
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-icone"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <span class="logo-texto">Elaine<small>Consultora de Seguros · Simca Seguros</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#planos">Planos</a>
+      <a href="#empresas">Para empresas</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#duvidas">Dúvidas</a>
+      <a href="#cotacao" class="btn btn-primario">Ver meus valores</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">Cotação gratuita em minutos</span>
+      <h1>Quanto <span>você</span> pagaria hoje em um plano de saúde?</h1>
+      <p class="lead">Eu sou a Elaine e comparo para você as principais operadoras de uma vez só: Amil, Assim Saúde, Bradesco, Porto, SulAmérica e Unimed. Para você, sua família ou sua empresa, em todo o Brasil.</p>
+      <div class="hero-botoes">
+        <a href="#cotacao" class="btn btn-primario">Descobrir meus valores →</a>
+        <a href="#empresas" class="btn btn-secundario">Tenho CNPJ / MEI</a>
+      </div>
+      <div class="hero-provas">
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Sem compromisso</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Atendimento humano</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Com a segurança da Simca Seguros</div>
+      </div>
+    </div>
+
+    <div class="hero-foto">
+      <img src="fotos/elaine.jpg" alt="Elaine, consultora de planos de saúde da Simca Seguros" width="843" height="1175">
+      <div class="curioso">
+        <h3>Sua simulação personalizada</h3>
+        <small>Depende da idade e da cidade</small>
+        <div class="preco-borrado"><div><b>Individual / Família</b><span class="op">a partir de</span></div><div class="borrado">R$ 000,00</div></div>
+        <div class="preco-borrado"><div><b>Empresarial / MEI</b><span class="op">por pessoa, a partir de</span></div><div class="borrado">R$ 000,00</div></div>
+        <a href="#cotacao" class="btn btn-primario">Ver meus valores</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== OPERADORAS ========== -->
+<section class="operadoras">
+  <div class="container">
+    <p>Consultora especializada nos planos</p>
+    <div class="op-lista">
+      <div class="op-item"><img src="fotos/logos/amil.png" alt="Amil" loading="lazy"></div>
+      <div class="op-item"><img src="fotos/logos/assim.png" alt="Assim Saúde" loading="lazy"></div>
+      <div class="op-item"><img src="fotos/logos/bradesco.png" alt="Bradesco Saúde" loading="lazy"></div>
+      <div class="op-item"><img src="fotos/logos/porto.png" alt="Porto Seguro Saúde" loading="lazy"></div>
+      <div class="op-item"><img src="fotos/logos/sulamerica.png" alt="SulAmérica Saúde" loading="lazy"></div>
+      <div class="op-item"><img src="fotos/logos/unimed.png" alt="Unimed Costa do Sol" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PF x PJ ========== -->
+<section class="secao" id="planos">
+  <div class="container">
+    <div class="secao-cab revelar">
+      <span class="tag">Escolha o seu caminho</span>
+      <h2>Um plano certo para cada momento</h2>
+      <p>Seja só para você ou para toda a equipe da sua empresa, eu comparo as opções e encontro a que cabe no seu bolso.</p>
+    </div>
+    <div class="cards-2">
+      <div class="card-plano revelar">
+        <div class="icone"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></div>
+        <h3>Pessoa Física</h3>
+        <p>Para você, seu casal ou sua família.</p>
+        <ul class="lista-check">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Planos individuais, familiares e por adesão</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Opções com e sem coparticipação</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Rede de hospitais e laboratórios perto de você</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Ajuda na portabilidade de carências</li>
+        </ul>
+        <a href="#cotacao" class="btn btn-primario" data-tipo="pf">Ver valores para mim</a>
+      </div>
+
+      <div class="card-plano pj revelar" id="empresas">
+        <div class="icone"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div>
+        <h3>Pessoa Jurídica</h3>
+        <p>Para empresas, MEI e empresários individuais, incluindo sócios, funcionários e dependentes.</p>
+        <ul class="lista-check">
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Planos personalizados para o perfil da sua equipe</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Costuma sair mais barato que o plano individual</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Análise gratuita do plano que você já tem</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Benefício que ajuda a reter bons funcionários</li>
+        </ul>
+        <a href="#cotacao" class="btn btn-primario" data-tipo="pj">Reduzir o custo da minha empresa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ECONOMIA PJ ========== -->
+<section style="padding:0 0 90px">
+  <div class="container">
+    <div class="economia revelar">
+      <div>
+        <span class="tag" style="background:rgba(255,255,255,.08);color:#e3b4ae">Para quem tem CNPJ</span>
+        <h2>Vale a pena revisar o plano da sua empresa</h2>
+        <p style="margin-bottom:24px">Muitas empresas ficam anos no mesmo plano sem revisar. Eu analiso o que você paga hoje, comparo as operadoras e monto um plano sob medida, mantendo a qualidade e reduzindo o custo sempre que possível.</p>
+        <a href="#cotacao" class="btn btn-primario" data-tipo="pj">Quero uma análise grátis</a>
+      </div>
+      <div class="economia-quadro">
+        <div class="eq-titulo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg> Raio-X do plano da empresa</div>
+        <div class="eq-comp">
+          <div class="eq-linha">
+            <span class="eq-rot">Plano atual<small>sem revisão há anos</small></span>
+            <div class="eq-barra"><i class="s1" style="width:52%"></i><i class="s2" style="width:20%"></i><i class="s3" style="width:28%"></i></div>
+          </div>
+          <div class="eq-linha">
+            <span class="eq-rot">Plano sob medida<small>depois da análise</small></span>
+            <div class="eq-barra"><i class="s1" style="width:48%"></i><i class="s2" style="width:12%"></i><i class="s3" style="width:8%"></i><i class="eq-econ" style="width:32%">economia</i></div>
+          </div>
+          <div class="eq-legenda"><span><b class="s1"></b>Mensalidade</span><span><b class="s2"></b>Coparticipação</span><span><b class="s3"></b>Reajustes acumulados</span></div>
+        </div>
+        <div class="eq-analiso">
+          <b>O que eu analiso</b>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Nº de vidas e idades</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Rede de hospitais</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Coparticipação</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Tipo de acomodação</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Histórico de reajustes</li><li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M20 6 9 17l-5-5"/></svg>Carências e portabilidade</li>
+          </ul>
+        </div>
+        <small>Ilustração. A economia real depende do número de vidas, idades, região, operadora e do plano atual.</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ANÚNCIO ODONTO ========== -->
+<section style="padding:0 0 90px">
+  <div class="container">
+    <div class="anuncio revelar">
+      <div><b>Sorriso também é saúde</b><span>Inclua o plano odontológico SulAmérica Odonto na sua cotação.</span></div>
+      <a href="#cotacao" class="btn btn-primario" onclick="document.querySelector('[name=odonto]').checked=true">Quero incluir</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMO FUNCIONA ========== -->
+<section class="secao" id="como-funciona" style="background:var(--fundo-2);">
+  <div class="container">
+    <div class="secao-cab revelar">
+      <span class="tag">Simples assim</span>
+      <h2>Como funciona</h2>
+      <p>Você não perde tempo ligando para cada operadora. Eu faço isso por você.</p>
+    </div>
+    <div class="passos">
+      <div class="passo revelar"><span class="passo-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg></span><span class="passo-n">Passo 1</span><h3>Conte sobre você</h3><p>Preencha o formulário rapidinho: idades, cidade e se é para você ou empresa.</p></div>
+      <div class="passo revelar"><span class="passo-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 16v-4"/><path d="M12 16V8"/><path d="M17 16v-7"/></svg></span><span class="passo-n">Passo 2</span><h3>Nós comparamos</h3><p>Levanto os valores em todas as operadoras e nas melhores categorias.</p></div>
+      <div class="passo revelar"><span class="passo-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/><path d="m8.5 11.5 2.5 2.5 4.5-4.5"/></svg></span><span class="passo-n">Passo 3</span><h3>Você escolhe</h3><p>Você recebe as opções no meu WhatsApp, com explicação clara de cada uma.</p></div>
+      <div class="passo revelar"><span class="passo-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="passo-n">Passo 4</span><h3>Contratação fácil</h3><p>Cuido da papelada e continuo do seu lado depois da contratação.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COTAÇÃO ========== -->
+<section class="secao cotacao" id="cotacao">
+  <div class="container cotacao-grid">
+    <div class="revelar">
+      <span class="tag">Cotação grátis</span>
+      <h2>Descubra quanto você vai pagar</h2>
+      <p style="color:var(--suave);font-size:1.08rem">Preencha os dados e eu te mando as melhores opções pelo WhatsApp. Sem ligação chata, sem compromisso.</p>
+      <div class="beneficios-lado">
+        <div class="beneficio"><div class="bi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><div><b>Resposta rápida</b><span>Retorno no mesmo dia útil.</span></div></div>
+        <div class="beneficio"><div class="bi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/></svg></div><div><b>Seus dados protegidos</b><span>Usados só para a sua cotação.</span></div></div>
+        <div class="beneficio"><div class="bi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M12 3v18"/></svg></div><div><b>6 operadoras, 1 conversa</b><span>Compare tudo falando só comigo.</span></div></div>
+      </div>
+    </div>
+
+    <form class="form-card revelar" id="form-cotacao" novalidate>
+      <div class="abas" role="tablist">
+        <button type="button" class="ativa" data-aba="pf">Pessoa Física</button>
+        <button type="button" data-aba="pj">Empresa / MEI</button>
+      </div>
+
+      <div class="campo"><label for="nome">Seu nome</label><input id="nome" name="nome" required placeholder="Como podemos te chamar?"></div>
+      <div class="linha-2">
+        <div class="campo"><label for="whats">WhatsApp</label><input id="whats" name="whats" type="tel" required placeholder="(22) 99999-9999"></div>
+        <div class="campo"><label for="cidade">Cidade</label><input id="cidade" name="cidade" required placeholder="Sua cidade"></div>
+      </div>
+
+      <div class="so-pf">
+        <div class="linha-2">
+          <div class="campo"><label for="pessoas">Quantas pessoas?</label>
+            <select id="pessoas" name="pessoas"><option>Só eu</option><option>2 pessoas</option><option>3 pessoas</option><option>4 pessoas</option><option>5 ou mais</option></select></div>
+          <div class="campo"><label for="idades">Idade(s)</label><input id="idades" name="idades" placeholder="Ex.: 34, 32, 5"></div>
+        </div>
+      </div>
+
+      <div class="so-pj">
+        <div class="campo"><label for="empresa">Nome da empresa</label><input id="empresa" name="empresa" placeholder="Razão social ou nome fantasia"></div>
+        <div class="linha-2">
+          <div class="campo"><label for="vidas">Quantas vidas?</label>
+            <select id="vidas" name="vidas"><option>2 a 5</option><option>6 a 29</option><option>30 a 99</option><option>100 ou mais</option><option>Sou MEI</option></select></div>
+          <div class="campo"><label for="atual">Já tem plano?</label>
+            <select id="atual" name="atual"><option>Não</option><option>Sim — quero pagar menos</option></select></div>
+        </div>
+      </div>
+
+      <div class="campo"><label for="operadora">Preferência de operadora</label>
+        <select id="operadora" name="operadora"><option>Quero comparar todas</option><option>Amil</option><option>Assim Saúde</option><option>Bradesco Saúde</option><option>Porto Saúde</option><option>SulAmérica</option><option>Unimed Costa do Sol</option></select></div>
+
+      <label class="check-odonto"><input type="checkbox" name="odonto" value="Sim"> Quero incluir plano odontológico</label>
+
+      <button type="submit" class="btn btn-primario">Receber minha cotação no WhatsApp</button>
+      <p class="aviso-form">Ao enviar, você vai direto para o WhatsApp da Elaine.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ========== SOBRE ========== -->
+<section class="secao sobre">
+  <div class="container sobre-grid">
+    <img class="foto-sobre revelar" src="fotos/elaine-retrato.jpg" alt="Elaine sorrindo, de blazer preto" loading="lazy">
+    <div class="revelar">
+      <span class="tag">Quem cuida de você</span>
+      <h2>Olá, eu sou a Elaine</h2>
+      <p>Sou consultora de seguros da <b>Simca Seguros</b>, de Macaé. Trabalho com planos de saúde e seguros diversos, todos os tipos de seguros, e ajudo famílias e empresas de todo o Brasil a encontrar o plano certo pagando o justo.</p>
+      <p>Você fala com uma pessoa só, que conhece as regras de cada operadora e te orienta também depois da contratação, em reembolsos, autorizações e reajustes. E por trás de mim está toda a estrutura da Simca.</p>
+      <a href="#" class="btn btn-primario link-zap" style="margin-top:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7c1.8 1 3.8 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4z"/></svg> Falar comigo no WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SEGUROS DIVERSOS ========== -->
+<section class="secao" style="padding-top:0">
+  <div class="container">
+    <div class="seguros revelar">
+      <div class="secao-cab" style="margin-bottom:28px">
+        <span class="tag">Além do plano de saúde</span>
+        <h2>Todos os tipos de seguros</h2>
+        <p>Proteja também o que é importante para você e para a sua empresa. É só me chamar.</p>
+      </div>
+      <div class="seguros-lista">
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><path d="M9 17h6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>Seguro Auto</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M5 17l4-7h5l3 7"/><path d="M12 10l2-4h3"/></svg>Seguro Moto</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"/></svg>Seguro de Vida</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg>Residencial</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 3h16v18H4z"/><path d="M9 7h1"/><path d="M14 7h1"/><path d="M9 11h1"/><path d="M14 11h1"/><path d="M10 21v-4h4v4"/></svg>Empresarial</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16l20-8-6 12-3-5z"/><path d="M13 15 22 8"/></svg>Seguro Viagem</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M11 18h2"/></svg>Celular</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M5.5 17 9 9h6l3.5 8"/><path d="M9 9 8 6H6"/><path d="M12 17l3-8"/></svg>Bike</span>
+        <span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h11v10H3z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>Caminhão e Frota</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/><path d="M8 21h8"/></svg>Responsabilidade Civil</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>Transporte e Carga</span><span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg>Plano Odontológico</span>
+      </div>
+      <div style="text-align:center;margin-top:28px"><a href="#" class="btn btn-primario link-zap" data-msg="Olá, Elaine! Vim pelo site e gostaria de uma cotação de seguro.">Pedir cotação de seguro</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="secao" id="duvidas" style="background:var(--fundo-2)">
+  <div class="container">
+    <div class="secao-cab revelar"><span class="tag">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+    <div class="faq">
+      <details><summary>Pago alguma coisa a mais por contratar com corretora?</summary><p>Não. O valor do plano é o mesmo da operadora. A corretora é remunerada pela própria operadora, então a comparação e o atendimento não têm custo extra para você.</p></details>
+      <details><summary>Quem tem MEI pode ter plano empresarial?</summary><p>Sim! MEI e empresários individuais podem contratar plano empresarial, normalmente com pelo menos 6 meses de CNPJ ativo. Esses planos costumam ter valores menores que os individuais. O número mínimo de pessoas muda de operadora para operadora, e eu verifico isso para você.</p></details>
+      <details><summary>Consigo trocar de plano sem cumprir carência de novo?</summary><p>Em muitos casos sim, pela portabilidade de carências, seguindo as regras da ANS. Analisamos o seu caso gratuitamente.</p></details>
+      <details><summary>Minha empresa já tem plano. Vale a pena revisar?</summary><p>Vale. Reajustes acumulados podem deixar o plano bem mais caro com o tempo. Comparamos o que você paga com as alternativas do mercado e mostramos se dá para economizar.</p></details>
+      <details><summary>Empresa com muitos funcionários precisa cumprir carência?</summary><p>Em contratos empresariais com 30 vidas ou mais, quem entra em até 30 dias pode ficar isento de carências. Cada operadora tem as suas regras, e eu te explico tudo antes de fechar.</p></details>
+      <details><summary>Tem plano odontológico também?</summary><p>Tem! Dá para fazer o odontológico sozinho ou junto com o plano de saúde. É só marcar a opção no formulário.</p></details>
+      <details><summary>Qual a diferença entre plano com e sem coparticipação?</summary><p>No plano com coparticipação a mensalidade é menor e você paga uma parte quando usa (consultas, exames). Sem coparticipação, a mensalidade é maior, mas não há cobrança por uso.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA FINAL ========== -->
+<section class="cta-final">
+  <div class="container revelar">
+    <h2>Vamos encontrar o plano certo para você?</h2>
+    <p>Me conte um pouco sobre você ou sua empresa e eu preparo uma cotação com calma e sem compromisso.</p>
+    <a href="#cotacao" class="btn btn-primario">Quero minha cotação grátis</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="rodape-grid">
+      <div>
+        <h4>Elaine · Consultora de Seguros</h4>
+        <p>Consultora especializada Simca Seguros. Planos de saúde e todos os tipos de seguros. Atendimento para você e sua empresa em todo o Brasil.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#" class="link-zap">WhatsApp: (22) 99700-7134</a></li>
+          <li>Atendimento em todo o Brasil</li>
+          <li><a href="https://simcaseguros.com.br/" target="_blank" rel="noopener">simcaseguros.com.br</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Operadoras</h4>
+        <ul><li>Amil</li><li>Assim Saúde</li><li>Bradesco Saúde</li><li>Porto Saúde</li><li>SulAmérica</li><li>Unimed Costa do Sol</li></ul>
+      </div>
+    </div>
+    <div class="rodape-legal">
+      <a href="https://simcaseguros.com.br/" target="_blank" rel="noopener" class="simca-rodape"><img src="fotos/logos/simca.png" alt="Simca Seguros" width="140" height="35"></a>
+      Atendimento intermediado pela Simca Seguros · R. Velho Campos, 86 – Lj 01 – Centro, Macaé – RJ<br>
+      Os planos são de responsabilidade das respectivas operadoras, registradas na ANS. Valores e condições sujeitos à análise e às regras de cada operadora. As marcas citadas pertencem aos seus titulares.
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="zap link-zap" aria-label="Falar no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4C2.7 15.6 2.2 13.8 2.2 12 2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zM20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.6 4.2 1.6 6L0 24l6.3-1.7c1.8 1 3.8 1.5 5.7 1.5 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.4z"/></svg>
+</a>
+
+<script>
+  // ===== CONFIGURAÇÃO: número do WhatsApp da corretora (só números, com 55 + DDD) =====
+  const WHATSAPP = "5522997007134";
+
+  const msgPadrao = "Olá, Elaine! Vim pelo site e gostaria de uma cotação de plano de saúde.";
+  document.querySelectorAll(".link-zap").forEach(a => {
+    a.href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(a.dataset.msg || msgPadrao)}`;
+    a.target = "_blank"; a.rel = "noopener";
+  });
+
+  // Abas PF / PJ
+  const form = document.getElementById("form-cotacao");
+  let tipo = "pf";
+  function setAba(t){
+    tipo = t;
+    form.classList.toggle("modo-pj", t === "pj");
+    form.querySelectorAll(".abas button").forEach(b => b.classList.toggle("ativa", b.dataset.aba === t));
+  }
+  form.querySelectorAll(".abas button").forEach(b => b.addEventListener("click", () => setAba(b.dataset.aba)));
+  document.querySelectorAll("[data-tipo]").forEach(a => a.addEventListener("click", () => setAba(a.dataset.tipo)));
+
+  // Máscara simples de telefone
+  const whats = document.getElementById("whats");
+  whats.addEventListener("input", () => {
+    let v = whats.value.replace(/\D/g, "").slice(0, 11);
+    if (v.length > 6) v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if (v.length > 2) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    whats.value = v;
+  });
+
+  // Envio → abre WhatsApp com a mensagem pronta
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const f = Object.fromEntries(new FormData(form));
+    const faltando = ["nome","whats","cidade"].filter(k => !String(f[k] || "").trim());
+    if (faltando.length){ form.querySelector("#" + faltando[0]).focus(); form.querySelector("#" + faltando[0]).style.borderColor = "#e5533d"; return; }
+
+    let linhas = [`Olá, Elaine! Quero uma cotação de plano de saúde.`, ``, `*Nome:* ${f.nome}`, `*WhatsApp:* ${f.whats}`, `*Cidade:* ${f.cidade}`];
+    if (tipo === "pf") {
+      linhas.push(`*Tipo:* Pessoa Física`, `*Pessoas:* ${f.pessoas}`, `*Idades:* ${f.idades || "—"}`);
+    } else {
+      linhas.push(`*Tipo:* Empresa / MEI`, `*Empresa:* ${f.empresa || "—"}`, `*Vidas:* ${f.vidas}`, `*Já tem plano:* ${f.atual}`);
+    }
+    linhas.push(`*Operadora:* ${f.operadora}`, `*Odontológico:* ${f.odonto ? "Sim" : "Não"}`);
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(linhas.join("\n"))}`, "_blank", "noopener");
+  });
+
+  // Animação ao rolar
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add("visivel"); io.unobserve(en.target); } }), {threshold:.12});
+  document.querySelectorAll(".revelar").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
