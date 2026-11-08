@@ -1,5 +1,11 @@
 # Landing page — Consultora de Seguros
 
+### ▶ [Abrir o site ao vivo](https://foxylyv.github.io/landing-page-consultora/)
+
+| Computador | Celular |
+|---|---|
+| ![Site no computador](screenshots/landing.png) | <img src="screenshots/landing-celular.png" width="260"> |
+
 Página única de captação de clientes para uma consultora de planos de saúde e seguros
 (Simca Seguros), feita como projeto freelance.
 
